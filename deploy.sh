@@ -10,6 +10,16 @@ echo "🧹 Limpiando builds anteriores..."
 rm -rf dist
 rm -rf node_modules/.vite
 
+# 1.5. Verificar que index.html tiene las rutas correctas
+echo "🔍 Verificando index.html..."
+if grep -q 'src="/src/main.jsx"' index.html; then
+    echo "✅ index.html tiene rutas correctas"
+else
+    echo "❌ Error: index.html tiene rutas incorrectas"
+    echo "Debe tener: src=\"/src/main.jsx\" (con barra inicial)"
+    exit 1
+fi
+
 # 2. Verificar que coi-serviceworker.js existe
 if [ ! -f "public/coi-serviceworker.js" ]; then
     echo "❌ Error: coi-serviceworker.js no encontrado en public/"
