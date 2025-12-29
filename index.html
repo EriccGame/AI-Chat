@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Chat - Chatbot de Albañilería</title>
+    
+    <!-- IMPORTANTE: coi-serviceworker DEBE ir ANTES que cualquier otro script -->
+    <!-- Descargar coi-serviceworker.js desde: https://github.com/gzuidhof/coi-serviceworker/raw/master/coi-serviceworker.js -->
+    <!-- y colocarlo en la carpeta public/ -->
+    <script src="/coi-serviceworker.js"></script>
+    
+    <style>
+      /* Estilos de carga inicial */
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        z-index: 9999;
+      }
+      
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 1s ease-in-out infinite;
+        margin-bottom: 20px;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-DUwcRKfk.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BttbcPVH.css">
+  </head>
+  <body>
+    <div id="root">
+      <!-- Pantalla de carga inicial -->
+      <div class="loading-screen">
+        <div class="spinner"></div>
+        <h2>Cargando AI Chat</h2>
+        <p>Inicializando chatbot de albañilería...</p>
+      </div>
+    </div>
+  </body>
+</html>
