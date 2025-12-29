@@ -1,37 +1,45 @@
-# 🔧 Solución para Errores de GitHub Pages
+# 🔧 Solución DEFINITIVA para Errores de GitHub Pages
 
-## ❌ Errores que estás viendo:
+## ❌ **Problema Identificado**:
+Los archivos se están buscando en la raíz (`https://ericcgame.github.io/`) en lugar de en la subcarpeta del repositorio (`https://ericcgame.github.io/AI-Chat/`).
+
 ```
-GET https://ericcgame.github.io/coi-serviceworker.js net::ERR_ABORTED 404 (Not Found)
-GET https://ericcgame.github.io/src/main.jsx net::ERR_ABORTED 404 (Not Found)
-GET https://ericcgame.github.io/vite.svg 404 (Not Found)
-```
-
-## ✅ Solución Paso a Paso:
-
-### 1. **Verificar que coi-serviceworker.js existe**
-```bash
-# Verificar que el archivo existe
-ls ai-chat/public/coi-serviceworker.js
+❌ Buscando en: https://ericcgame.github.io/coi-serviceworker.js
+✅ Debería ser: https://ericcgame.github.io/AI-Chat/coi-serviceworker.js
 ```
 
-Si no existe, descárgalo:
-```bash
-curl -o ai-chat/public/coi-serviceworker.js https://github.com/gzuidhof/coi-serviceworker/raw/master/coi-serviceworker.js
-```
+## 🚨 **SOLUCIÓN INMEDIATA - Usar Script Automático**:
 
-### 2. **Hacer un nuevo build y deploy**
+### **Opción 1: Script Automático (RECOMENDADO)**
 ```bash
 cd ai-chat
 
-# Limpiar build anterior
-rm -rf dist
+# Hacer ejecutable el script
+chmod +x deploy.sh
 
-# Nuevo build con el archivo coi-serviceworker.js incluido
+# Ejecutar deploy automático
+./deploy.sh
+```
+
+### **Opción 2: Comandos Manuales**
+```bash
+cd ai-chat
+
+# 1. Limpiar completamente
+rm -rf dist
+rm -rf node_modules/.vite
+
+# 2. Verificar que coi-serviceworker.js existe
+ls public/coi-serviceworker.js  # DEBE existir
+
+# 3. Build limpio
 npm run build
 
-# Deploy a GitHub Pages
-npm run deploy
+# 4. Verificar que dist/coi-serviceworker.js existe
+ls dist/coi-serviceworker.js  # DEBE existir después del build
+
+# 5. Deploy forzado
+npm run deploy-force
 ```
 
 ### 3. **Verificar configuración de GitHub Pages**
