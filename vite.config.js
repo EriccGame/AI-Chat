@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   // Cambiar 'ai-chat' por el nombre real de tu repositorio en GitHub
-  base: '/ai-chat/',
+  base: '/AI-Chat/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
